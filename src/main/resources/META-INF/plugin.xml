@@ -1,0 +1,30 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>org.jetbrains.plugins.template</id>
+    <name>Platform Template</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
+        <projectService serviceImplementation="org.jetbrains.plugins.template.services.MyProjectService"/>
+    </extensions>
+
+    <actions>
+        <action id="helloworld" class="actions.HelloWorldAction" text="Hello World">
+            <add-to-group group-id="ToolsMenu" anchor="first"></add-to-group>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"></add-to-group>
+        </action>
+        <action id="embeddings" class="actions.EmbeddingsAction" text="Embeddings">
+            <add-to-group group-id="ToolsMenu" anchor="first"></add-to-group>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"></add-to-group>
+        </action>
+    </actions>
+
+    <applicationListeners>
+        <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+</idea-plugin>
